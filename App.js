@@ -1,12 +1,16 @@
 import {StatusBar} from 'expo-status-bar';
-import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import React, {useState} from 'react';
+import {StyleSheet, Text, View, Button, TouchableOpacity} from 'react-native';
 
 export default function App() {
+    const [count, setCount] = useState(0);
     return (
         <View style={styles.container}>
-            <Text>Open up App.js to start working on your app!</Text>
-            <StatusBar style="auto"/>
+            <TouchableOpacity onPress={() => setCount(count + 1)} style={styles.button}>
+                <Text>Click me!</Text>
+            </TouchableOpacity>
+            <Text style={{marginBottom: 10}}>You clicked {count} times</Text>
+            <Button title="Click me!" onPress={() => setCount(count + 1)}/>
         </View>
     );
 }
@@ -18,4 +22,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    button: {
+        backgroundColor: '#DDDDDD',
+        padding: 10,
+        marginBottom: 10,
+        alignItems: 'center'
+    }
 });
